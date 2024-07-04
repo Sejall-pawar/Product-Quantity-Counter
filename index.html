@@ -21,15 +21,32 @@
                 <span>
                     Quantity =
                 </span>
-                <img src="add.png" alt="add" class="count-img">
-                <span>
-                    0
+                <img src="add.png" alt="add" class="count-img" onclick="QuantityHandler('inc')">
+                <span id="value">
+                    1
                 </span>
-                <img src="minus.png" alt="minus" class="count-img">
+                <img src="minus.png" alt="minus" class="count-img" onclick="QuantityHandler('dec')">
             </div>
             <button type="button" class="buy-btn">Buy Now</button>
         </div>
     </div>
+
+    <script>
+        function QuantityHandler(action){
+            const QuantityElement = document.getElementById("value")
+            let Quantity = parseInt(QuantityElement.innerText);
+
+            if(Quantity==1 && action=="dec"){
+                alert('Quantity cannot be less than 1')
+                return
+            }
+            else if(Quantity==5 && action=="inc"){
+                alert('Quantity cannot be more than 5')
+                return
+            }
+            QuantityElement.innerText = action=="inc" ? ++Quantity : --Quantity;
+        }
+    </script>
 </body>
 
 </html>
